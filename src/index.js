@@ -6,6 +6,14 @@ dotenv.config({
 })
 
 connectDB()
+    .then(()=>{
+        app.listen(process.env.PORT || 8000,()=>{
+            console.log(`Server live at http://localhost:${process.env.PORT}...`);
+        })
+    })
+        .catch((error)=>{
+            console.error("DB CONNECTION FAILED:",error)
+        })
 
 
 
